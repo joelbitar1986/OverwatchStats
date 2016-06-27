@@ -5,27 +5,27 @@ class OverwatchStats::Hero
 
   @@all = []
 
-  @@urls = ["http://masteroverwatch.com/heroes/15-bastion",
-  "http://masteroverwatch.com/heroes/22-d-va",
-  "http://masteroverwatch.com/heroes/21-genji",
-  "http://masteroverwatch.com/heroes/16-hanzo",
-  "http://masteroverwatch.com/heroes/2-junkrat",
-  "http://masteroverwatch.com/heroes/3-lucio",
-  "http://masteroverwatch.com/heroes/6-mccree",
-  "http://masteroverwatch.com/heroes/20-mei",
-  "http://masteroverwatch.com/heroes/17-mercy",
-  "http://masteroverwatch.com/heroes/11-pharah",
-  "http://masteroverwatch.com/heroes/8-reaper",
-  "http://masteroverwatch.com/heroes/12-reinhardt",
-  "http://masteroverwatch.com/heroes/1-roadhog",
-  "http://masteroverwatch.com/heroes/4-soldier-76",
-  "http://masteroverwatch.com/heroes/13-symmetra",
-  "http://masteroverwatch.com/heroes/14-torbjorn",
-  "http://masteroverwatch.com/heroes/7-tracer",
-  "http://masteroverwatch.com/heroes/9-widowmaker",
-  "http://masteroverwatch.com/heroes/10-winston",
-  "http://masteroverwatch.com/heroes/5-zarya",
-  "http://masteroverwatch.com/heroes/18-zenyatta"]
+  # @@urls = ["http://masteroverwatch.com/heroes/15-bastion",
+  # "http://masteroverwatch.com/heroes/22-d-va",
+  # "http://masteroverwatch.com/heroes/21-genji",
+  # "http://masteroverwatch.com/heroes/16-hanzo",
+  # "http://masteroverwatch.com/heroes/2-junkrat",
+  # "http://masteroverwatch.com/heroes/3-lucio",
+  # "http://masteroverwatch.com/heroes/6-mccree",
+  # "http://masteroverwatch.com/heroes/20-mei",
+  # "http://masteroverwatch.com/heroes/17-mercy",
+  # "http://masteroverwatch.com/heroes/11-pharah",
+  # "http://masteroverwatch.com/heroes/8-reaper",
+  # "http://masteroverwatch.com/heroes/12-reinhardt",
+  # "http://masteroverwatch.com/heroes/1-roadhog",
+  # "http://masteroverwatch.com/heroes/4-soldier-76",
+  # "http://masteroverwatch.com/heroes/13-symmetra",
+  # "http://masteroverwatch.com/heroes/14-torbjorn",
+  # "http://masteroverwatch.com/heroes/7-tracer",
+  # "http://masteroverwatch.com/heroes/9-widowmaker",
+  # "http://masteroverwatch.com/heroes/10-winston",
+  # "http://masteroverwatch.com/heroes/5-zarya",
+  # "http://masteroverwatch.com/heroes/18-zenyatta"]
 
   def self.scrapehero(page_url)
     doc = Nokogiri::HTML(open(page_url))
@@ -149,12 +149,12 @@ class OverwatchStats::Hero
     zenyatta
   end
 
-  def self.hero_collect
-    @@urls.each do |url|
-      x = self.scrapehero(url)
-      @@all << x
-    end
-    @@all
-  end
+  # def self.hero_collect
+  #   @@urls.each do |url|
+  #     x = self.scrapehero(url)
+  #     @@all << x
+  #   end
+  #   @@all
+  # end
 
 end
