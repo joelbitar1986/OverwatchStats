@@ -14,6 +14,7 @@ class OverwatchStats::CLI
 
   def menu
     puts "Type the following to change sorting rules: '(win)rate' '(pop)ularity' '(score)min' '(kd)ratio' or '(alph)abetically'"
+    puts "Type the name of one of the above heroes to see more about that hero"
     puts "Type 'exit' to exit."
 
     input = gets.strip.downcase
@@ -29,48 +30,69 @@ class OverwatchStats::CLI
       elsif input == "kdratio" || input == "kd"
         display_stats_herokd
         menu
-      # elsif input == "bastion"
-      #   show_bastion
-      # elsif input == "d.va"
-      #   show_dva
-      # elsif input == "genji"
-      #   show_genji
-      # elsif input == "hanzo"
-      #   show_hanzo
-      # elsif input == "junkrat"
-      #   show_junkrat
-      # elsif input == "lucio"
-      #   show_lucio
-      # elsif input == "mccree"
-      #   show_mccree
-      # elsif input == "mei"
-      #   show_mei
-      # elsif input == "mercy"
-      #   show_mercy
-      # elsif input == "pharah"
-      #   show_pharah
-      # elsif input == "reaper"
-      #   show_reaper
-      # elsif input == "reinhardt"
-      #   show_reinhardt
-      # elsif input == "roadhog"
-      #   show_roadhog
-      # elsif input == "soldier76"
-      #   show_soldier76
-      # elsif input == "symmetra"
-      #   show_symmetra
-      # elsif input == "torbjorn"
-      #   show_torbjorn
-      # elsif input == "tracer"
-      #   show_tracer
-      # elsif input == "widowmaker"
-      #   show_widowmaker
-      # elsif input == "winston"
-      #   show_winston
-      # elsif input == "zarya"
-      #   show_zarya
-      # elsif input == "zenyatta"
-      #   show_zenyatta
+      elsif input == "bastion"
+        display_bastion
+        menu
+      elsif input == "d.va"
+        display_dva
+        menu
+      elsif input == "genji"
+        display_genji
+        menu
+      elsif input == "hanzo"
+        display_hanzo
+        menu
+      elsif input == "junkrat"
+        display_junkrat
+        menu
+      elsif input == "lucio"
+        display_lucio
+        menu
+      elsif input == "mccree"
+        display_mccree
+        menu
+      elsif input == "mei"
+        display_mei
+        menu
+      elsif input == "mercy"
+        display_mercy
+        menu
+      elsif input == "pharah"
+        display_pharah
+        menu
+      elsif input == "reaper"
+        display_reaper
+        menu
+      elsif input == "reinhardt"
+        display_reinhardt
+        menu
+      elsif input == "roadhog"
+        display_roadhog
+        menu
+      elsif input == "soldier76"
+        display_soldier76
+        menu
+      elsif input == "symmetra"
+        display_symmetra
+        menu
+      elsif input == "torbjorn"
+        display_torbjorn
+        menu
+      elsif input == "tracer"
+        display_tracer
+        menu
+      elsif input == "widowmaker"
+        display_widowmaker
+        menu
+      elsif input == "winston"
+        display_winston
+        menu
+      elsif input == "zarya"
+        display_zarya
+        menu
+      elsif input == "zenyatta"
+        display_zenyatta
+        menu
       elsif input == "exit"
         exit
       else
@@ -123,5 +145,150 @@ class OverwatchStats::CLI
         puts "|| #{index}. #{herostats[:heroname]}    ||    #{herostats[:herotype]}    ||    #{herostats[:winrate]}    ||    #{herostats[:popularity]}    ||    #{herostats[:scoremin]}    || #{herostats[:herokd]}"
       end
     end
+
+    # def display_bastion
+    #   array = OverwatchStats::Hero.hero_collect
+    #   array.each do |x|
+    #     if x.name.downcase == "bastion"
+    #       puts "Name: #{x.name}"
+    #       puts "Role: #{x.role}"
+    #       puts ""
+    #       puts "Lore: #{x.lore}"
+    #       puts ""
+    #       puts "Max HP: #{x.hp}" unless x.hp == nil
+    #       puts "Ammo: #{x.ammo}" unless x.ammo == nil
+    #       puts ""
+    #       puts "**Abilities**"
+    #       puts "------------------------"
+    #       x.abilities.each do |ability|
+    #         puts "Ability: #{ability[:ability_name]}"
+    #         puts "Description: " + "#{ability[:ability_description]}"
+    #         puts ""
+    #       end
+    #     else
+    #       menu
+    #     end
+    #   end
+    # end
+
+
+
+    def display_bastion
+      x = OverwatchStats::Hero.bastion
+      show_stats(x)
+    end
+
+    def display_dva
+      x = OverwatchStats::Hero.dva
+      show_stats(x)
+    end
+
+    def display_genji
+      x = OverwatchStats::Hero.genji
+      show_stats(x)
+    end
+
+    def display_hanzo
+      x = OverwatchStats::Hero.hanzo
+      show_stats(x)
+    end
+
+    def display_junkrat
+      x = OverwatchStats::Hero.junkrat
+      show_stats(x)
+    end
+
+    def display_lucio
+      x = OverwatchStats::Hero.lucio
+      show_stats(x)
+    end
+
+    def display_mccree
+      x = OverwatchStats::Hero.mccree
+      show_stats(x)
+    end
+
+    def display_pharah
+      x = OverwatchStats::Hero.pharah
+      show_stats(x)
+    end
+
+    def display_reaper
+      x = OverwatchStats::Hero.reaper
+      show_stats(x)
+    end
+
+    def display_reinhardt
+      x = OverwatchStats::Hero.reinhardt
+      show_stats(x)
+    end
+
+    def display_roadhog
+      x = OverwatchStats::Hero.roadhog
+      show_stats(x)
+    end
+
+    def display_soldier76
+      x = OverwatchStats::Hero.soldier76
+      show_stats(x)
+    end
+
+    def display_symmetra
+      x = OverwatchStats::Hero.symmetra
+      show_stats(x)
+    end
+
+    def display_torbjorn
+      x = OverwatchStats::Hero.torbjorn
+      show_stats(x)
+    end
+
+    def display_tracer
+      x = OverwatchStats::Hero.tracer
+      show_stats(x)
+    end
+
+    def display_widowmaker
+      x = OverwatchStats::Hero.widowmaker
+      show_stats(x)
+    end
+
+    def display_winston
+      x = OverwatchStats::Hero.winston
+      show_stats(x)
+    end
+
+    def display_zarya
+      x = OverwatchStats::Hero.zarya
+      show_stats(x)
+    end
+
+    def display_zenyatta
+      x = OverwatchStats::Hero.zenyatta
+      show_stats(x)
+    end
+
+    def show_stats(x)
+      puts "Name: #{x.name}"
+      puts ""
+      puts "Role: #{x.role}"
+      puts "Max HP: #{x.hp}" unless x.hp == nil
+      puts "Ammo: #{x.ammo}" unless x.ammo == nil
+      puts ""
+      puts "Lore: #{x.lore}"
+      puts ""
+      puts ""
+      puts "**Abilities**"
+      puts "------------------------"
+      x.abilities.each do |ability|
+        puts "Ability: #{ability[:ability_name]}"
+        puts "Description: " + "#{ability[:ability_description]}"
+        puts ""
+      end
+    end
+
+
+
+
 
 end
