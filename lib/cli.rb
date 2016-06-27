@@ -73,7 +73,7 @@ class OverwatchStats::CLI
       elsif input == "roadhog"
         display_roadhog
         menu
-      elsif input == "soldier76"
+      elsif input == "soldier76" || input == "soldier:76" || input == "soldier: 76"
         display_soldier76
         menu
       elsif input == "symmetra"
@@ -192,8 +192,8 @@ class OverwatchStats::CLI
         show_scoremin = check_width(herostats[:scoremin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
         puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
-        puts "==================================================================================="
       end
+      puts "==================================================================================="
     end
 
     def check_width(string, index = 1, column_width = 13)
@@ -271,6 +271,11 @@ class OverwatchStats::CLI
 
     def display_mccree
       x = OverwatchStats::Hero.mccree
+      show_stats(x)
+    end
+
+    def display_mei
+      x = OverwatchStats::Hero.mei
       show_stats(x)
     end
 
