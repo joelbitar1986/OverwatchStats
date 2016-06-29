@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["joelbitar1986"]
   spec.email         = ["joelbitar1986@gmail.com"]
 
-  spec.summary       = "This app displays current stats of overwatch heroes based on factors like winrate, popularity, K/D ratio and score/minute."
+  spec.summary       = "This app displays current stats of Overwatch(tm) heroes based on factors like winrate, popularity, K/D ratio and score/minute."
   spec.description   = spec.description
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/joelbitar1986/OverwatchStats"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
