@@ -6,7 +6,7 @@ require 'version'
 Gem::Specification.new do |spec|
   spec.name          = "overwatch_stats"
   spec.version       = OverwatchStats::VERSION
-  spec.authors       = ["joelbitar1986"]
+  spec.authors       = ["Joel Bitar"]
   spec.email         = ["joelbitar1986@gmail.com"]
 
   spec.summary       = "This app displays current stats of Overwatch(tm) heroes based on factors like winrate, popularity, K/D ratio and score/minute."
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/joelbitar1986/OverwatchStats"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features|pkg)/}) }
+  spec.files         = ['lib/cli.rb', 'lib/environment.rb', 'lib/hero.rb', 'lib/statscraper.rb', 'lib/version.rb']
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
