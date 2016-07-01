@@ -13,8 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/joelbitar1986/OverwatchStats"
   spec.license       = "MIT"
-
-  spec.files         = ['lib/cli.rb', 'lib/environment.rb', 'lib/hero.rb', 'lib/statscraper.rb', 'lib/version.rb']
+  spec.files         = Dir['lib/**/*.rb']
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
