@@ -1,15 +1,13 @@
-# Overwatchstats
+# overwatch_stats
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/overwatchstats`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This app displays current stats of Overwatch(tm) heroes based on factors like winrate, popularity, K/D ratio and score/minute.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'overwatchstats'
+gem 'overwatch_stats'
 ```
 
 And then execute:
@@ -18,11 +16,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install overwatchstats
+    $ gem install overwatch_stats
 
 ## Usage
 
-TODO: Write usage instructions here
+Option :1
+gem install overwatch_stats
+require 'overwatch_stats'
+
+Option :2
+Clone repository (https://github.com/joelbitar1986/OverwatchStats)
+run bin/overwatch_stats
+
 
 ## Development
 
@@ -32,10 +37,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/overwatchstats. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/joelbitar1986/OverwatchStats. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "overwatchstats"
+  spec.name          = "overwatch_stats"
   spec.version       = OverwatchStats::VERSION
   spec.authors       = ["joelbitar1986"]
   spec.email         = ["joelbitar1986@gmail.com"]
 
   spec.summary       = "This app displays current stats of Overwatch(tm) heroes based on factors like winrate, popularity, K/D ratio and score/minute."
-  spec.description   = spec.description
+  spec.description   = spec.summary
   spec.homepage      = "https://github.com/joelbitar1986/OverwatchStats"
   spec.license       = "MIT"
 
@@ -30,6 +30,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
-  spec.add_dependency "nokogiri"
+  spec.add_runtime_dependency "open-uri"
+  spec.add_runtime_dependency "nokogiri"
+
+
 end
