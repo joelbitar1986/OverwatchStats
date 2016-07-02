@@ -14,7 +14,7 @@ class OverwatchStats::CLI
   end
 
   def menu
-    puts "Type the following to change sorting rules: '(win)rate' '(pop)ularity' '(score)min' '(kd)ratio' or '(alph)abetically'."
+    puts "Type the following to change sorting rules: '(win)rate' '(pop)ularity' '(damage)min' '(kd)ratio' or '(alph)abetically'."
     puts "Type the name of one of the above heroes to see more about that hero."
     puts "Type 'exit' to exit."
 
@@ -25,8 +25,8 @@ class OverwatchStats::CLI
       elsif input == "popularity" || input == "pop"
         display_stats_popularity
         menu
-      elsif input == "scoremin" || input == "score"
-        display_stats_scoremin
+      elsif input == "damagemin" || input == "damage"
+        display_stats_damagemin
         menu
       elsif input == "kdratio" || input == "kd"
         display_stats_herokd
@@ -108,18 +108,19 @@ class OverwatchStats::CLI
 
     def display_stats_alphabetically
       stats = OverwatchStats::StatScraper.current
+      byalph = stats.sort_by {|hash| hash[:heroname]}
       puts ""
       puts "                        Stats Sorted Alphabetically"
       puts "==================================================================================="
-      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || SCORE/MIN || K/D Ratio ||"
-      stats.each.with_index(1) do |herostats, index|
+      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
+      byalph.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_scoremin = check_width(herostats[:scoremin], 1 , 8)
+        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -129,15 +130,15 @@ class OverwatchStats::CLI
       bywinrate = stats.sort_by {|hash| hash[:winrate]}.reverse
       puts "                          Stats Sorted by Winrate"
       puts "==================================================================================="
-      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || SCORE/MIN || K/D Ratio ||"
+      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
       bywinrate.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_scoremin = check_width(herostats[:scoremin], 1 , 8)
+        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -147,33 +148,40 @@ class OverwatchStats::CLI
       bypopularity = stats.sort_by {|hash| hash[:popularity]}.reverse
       puts "                         Stats Sorted by Popularity"
       puts "==================================================================================="
-      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || SCORE/MIN || K/D Ratio ||"
+      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
       bypopularity.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_scoremin = check_width(herostats[:scoremin], 1 , 8)
+        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
 
-    def display_stats_scoremin
+    def display_stats_damagemin
       stats = OverwatchStats::StatScraper.current
-      byscoremin = stats.sort_by {|hash| hash[:scoremin]}.reverse
-      puts "                        Stats Sorted by Score/Minute"
+      new_array = []
+      stats.collect do |x|
+        if x[:damagemin].include?(",")
+          x[:damagemin].gsub!(",","")
+        end
+        new_array << x
+      end
+      bydamagemin = new_array.sort_by {|hash| hash[:damagemin].to_i}.reverse
+      puts "                        Stats Sorted by Damage/Minute"
       puts "==================================================================================="
-      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || SCORE/MIN || K/D Ratio ||"
-      byscoremin.each.with_index(1) do |herostats, index|
+      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
+      bydamagemin.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_scoremin = check_width(herostats[:scoremin], 1 , 8)
+        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -181,17 +189,17 @@ class OverwatchStats::CLI
     def display_stats_herokd
       stats = OverwatchStats::StatScraper.current
       byherokd = stats.sort_by {|hash| hash[:herokd]}.reverse
-      puts "                        Stats Sorted by Herokd"
+      puts "                             Stats Sorted by Herokd"
       puts "==================================================================================="
-      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || SCORE/MIN || K/D Ratio ||"
+      puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
       byherokd.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_scoremin = check_width(herostats[:scoremin], 1 , 8)
+        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_scoremin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
