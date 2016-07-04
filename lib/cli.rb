@@ -25,8 +25,8 @@ class OverwatchStats::CLI
       elsif input == "popularity" || input == "pop"
         display_stats_popularity
         menu
-      elsif input == "damagemin" || input == "damage"
-        display_stats_damagemin
+      elsif input == "medalmin" || input == "damage"
+        display_stats_medalmin
         menu
       elsif input == "kdratio" || input == "kd"
         display_stats_herokd
@@ -118,9 +118,9 @@ class OverwatchStats::CLI
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
+        show_medalmin = check_width(herostats[:medalmin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_medalmin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -136,9 +136,9 @@ class OverwatchStats::CLI
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
+        show_medalmin = check_width(herostats[:medalmin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_medalmin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -154,34 +154,27 @@ class OverwatchStats::CLI
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
+        show_medalmin = check_width(herostats[:medalmin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_medalmin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
 
-    def display_stats_damagemin
+    def display_stats_medalmin
       stats = OverwatchStats::StatScraper.current
-      new_array = []
-      stats.collect do |x|
-        if x[:damagemin].include?(",")
-          x[:damagemin].gsub!(",","")
-        end
-        new_array << x
-      end
-      bydamagemin = new_array.sort_by {|hash| hash[:damagemin].to_i}.reverse
+      bymedalmin = stats.sort_by {|hash| hash[:medalmin].to_i}.reverse
       puts "                        Stats Sorted by Damage/Minute"
       puts "==================================================================================="
       puts "||       HERO      ||   TYPE  || WINRATE || POPULARITY || DAMAGE/MIN || K/D Ratio ||"
-      bydamagemin.each.with_index(1) do |herostats, index|
+      bymedalmin.each.with_index(1) do |herostats, index|
         show_heroname = check_width(herostats[:heroname], index)
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
+        show_medalmin = check_width(herostats[:medalmin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_medalmin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
@@ -197,9 +190,9 @@ class OverwatchStats::CLI
         show_herotype = check_width(herostats[:herotype], 1 , 8)
         show_winrate = check_width(herostats[:winrate], 1 , 7)
         show_popularity = check_width(herostats[:popularity], 1 , 8)
-        show_damagemin = check_width(herostats[:damagemin], 1 , 8)
+        show_medalmin = check_width(herostats[:medalmin], 1 , 8)
         show_herokd = check_width(herostats[:herokd], 1 , 8)
-        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_damagemin} ||   #{show_herokd} ||"
+        puts "|| #{index}. #{show_heroname} || #{show_herotype} ||  #{show_winrate} ||    #{show_popularity} ||   #{show_medalmin} ||   #{show_herokd} ||"
       end
       puts "==================================================================================="
     end
