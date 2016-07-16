@@ -14,7 +14,7 @@ class OverwatchStats::CLI
   end
 
   def menu
-    puts "Type the following to change sorting rules: '(win)rate' '(pop)ularity' 'medal(game)' '(kd)ratio' or '(alph)abetically'."
+    puts "Type the following to change sorting rules: '(win)rate' '(pop)ularity' '(medal)game' '(kd)ratio' or '(alph)abetically'."
     puts "Type the name of one of the above heroes to see more about that hero."
     puts "Type 'exit' to exit."
 
@@ -25,7 +25,7 @@ class OverwatchStats::CLI
       elsif input == "popularity" || input == "pop"
         display_stats_popularity
         menu
-      elsif input == "medalpergame" || input == "medal"
+      elsif input == "medalgame" || input == "medal"
         display_stats_medalpergame
         menu
       elsif input == "kdratio" || input == "kd"

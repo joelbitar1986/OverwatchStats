@@ -23,6 +23,7 @@ Or install it yourself as:
 Option :1
 gem install overwatch_stats
 require 'overwatch_stats'
+in irb type 'OverwatchStats::CLI.new.start'
 
 Option :2
 Clone repository (https://github.com/joelbitar1986/OverwatchStats)
