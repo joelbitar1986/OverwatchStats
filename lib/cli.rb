@@ -280,6 +280,11 @@ class OverwatchStats::CLI
       show_stats(x)
     end
 
+    def display_mercy
+      x = OverwatchStats::Hero.mercy
+      show_stats(x)
+    end
+
     def display_pharah
       x = OverwatchStats::Hero.pharah
       show_stats(x)
